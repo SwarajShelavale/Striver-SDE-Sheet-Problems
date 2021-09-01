@@ -1,0 +1,8 @@
+
+void deleteNode(LinkedListNode<int>* node) {
+    // Write your code here.
+    LinkedListNode<int> *temp=node->next;
+    node->data=node->next->data;
+    node->next=node->next->next;
+    delete(temp);
+}
