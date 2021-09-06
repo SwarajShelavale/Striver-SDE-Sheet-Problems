@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<vector<int>> ans;
+    void subset(int idx,int target,vector<int>nums,vector<int>temp)
+    {
+        if(idx==nums.size())
+        {
+            if(target==0)
+                 ans.push_back(temp);
+            return;
+        }
+        if(nums[idx]<=target)
+        {
+            temp.push_back(nums[idx]);
+            subset(idx,target-nums[idx],nums,temp);
+            temp.pop_back();
+        }
+        subset(idx+1,target,nums,temp);
+        
+       
+    }
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        vector<int> temp;
+        subset(0,target, candidates,temp);
+        return ans;
+    }
+};
